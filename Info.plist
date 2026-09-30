@@ -28,5 +28,7 @@
     <string>PinTop uses Screen Recording to keep pinned windows (like Google Chrome) visible at 60fps on top of other active applications and for Picture-in-Picture mode.</string>
     <key>NSAppleEventsUsageDescription</key>
     <string>PinTop uses Accessibility and System Events to raise and focus pinned windows when you click them.</string>
+    <key>CFBundleIconFile</key>
+    <string>AppIcon</string>
 </dict>
 </plist>

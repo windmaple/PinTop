@@ -17,6 +17,9 @@ mkdir -p "$MACOS_DIR" "$RESOURCES_DIR"
 
 cp ".build/release/PinTop" "$MACOS_DIR/PinTop"
 cp "Info.plist" "$CONTENTS_DIR/Info.plist"
+if [ -f "Resources/AppIcon.icns" ]; then
+    cp "Resources/AppIcon.icns" "$RESOURCES_DIR/AppIcon.icns"
+fi
 chmod +x "$MACOS_DIR/PinTop"
 
 # Ad-hoc sign with consistent bundle identifier so macOS TCC permissions work cleanly

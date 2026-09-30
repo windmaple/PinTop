@@ -1,6 +1,20 @@
-# PinTop — Always on Top Window Manager for macOS
+<p align="center">
+  <img src="assets/icon.png" width="128" height="128" alt="PinTop Icon">
+</p>
+
+<h1 align="center">📌 PinTop — Always on Top Window Manager for macOS</h1>
 
 **PinTop** is a native macOS app (Swift / AppKit / SwiftUI / ScreenCaptureKit) that lets you pin any window—such as Google Chrome—always on top of other applications without disabling System Integrity Protection (SIP).
+
+## 📸 Screenshots
+
+<p align="center">
+  <img src="assets/screenshot-dashboard.png" width="92%" alt="PinTop Dashboard">
+</p>
+
+<p align="center">
+  <img src="assets/screenshot-modes.png" width="92%" alt="PinTop Hybrid Pinning Modes & Floating Control Pill">
+</p>
 
 ## Features
 
