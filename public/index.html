@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PinTop — Always on Top Window Manager for macOS (Zero SIP)</title>
+  <meta name="description" content="PinTop is a native macOS window manager built with Swift, AppKit, and ScreenCaptureKit that keeps Google Chrome or any macOS window always on top at 60fps without disabling SIP. Download free for macOS 14+." />
+  <meta name="keywords" content="PinTop, macOS always on top, pin window mac, ScreenCaptureKit, float window macOS, picture in picture mac, ghost window click through" />
+  <meta property="og:title" content="PinTop — Always on Top Window Manager for macOS" />
+  <meta property="og:description" content="Keep Google Chrome or any macOS window always on top without disabling System Integrity Protection (SIP). 4 hybrid pinning modes at 60fps." />
+  <meta property="og:image" content="assets/screenshot-dashboard.png" />
+  <meta property="og:type" content="website" />
+  <link rel="icon" type="image/png" href="assets/icon.png" />
+
+  <!-- Google Fonts: Plus Jakarta Sans & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="index.css" />
+</head>
+<body>
+
+  <!-- Top Sticky Navigation -->
+  <header class="site-header" id="site-header">
+    <div class="container nav-inner">
+      <a href="#top" class="brand-link" id="nav-brand-link">
+        <img src="assets/icon.png" alt="PinTop App Icon" class="brand-icon" width="36" height="36" />
+        <span>PinTop</span>
+        <span class="brand-meta">v1.0.0 · macOS 14+</span>
+      </a>
+
+      <nav aria-label="Primary Navigation">
+        <ul class="nav-links">
+          <li><a href="#interactive-sandbox" id="nav-link-sandbox">Live Sandbox</a></li>
+          <li><a href="#modes-section" id="nav-link-modes">4 Pinning Modes</a></li>
+          <li><a href="#screenshots-section" id="nav-link-screenshots">Interface</a></li>
+          <li><a href="#shortcuts-section" id="nav-link-shortcuts">Shortcuts</a></li>
+          <li><a href="#download-section" id="nav-link-install">Install &amp; Build</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <a href="https://github.com/windmaple/PinTop" target="_blank" rel="noopener noreferrer" class="btn-github-nav" id="nav-github-btn">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+          </svg>
+          <span>GitHub</span>
+        </a>
+        <a href="downloads/PinTop-macOS-arm64.zip" download="PinTop-macOS-arm64.zip" class="btn-nav-download" id="nav-download-btn">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+            <polyline points="7 10 12 15 17 10" />
+            <line x1="12" y1="15" x2="12" y2="3" />
+          </svg>
+          <span>Download</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- Hero Section -->
+    <section class="hero-section">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <div class="hero-eyebrow">
+            <span>Native Swift · AppKit · ScreenCaptureKit</span>
+          </div>
+
+          <h1 class="hero-title">
+            Keep any macOS window effortlessly on top—without disabling SIP.
+          </h1>
+
+          <p class="hero-subtitle">
+            Pin Google Chrome specs, live keynotes, terminals, or design notes above your active workspace. Powered by 60fps zero-copy <code>IOSurface</code> streams and native Accessibility window raising.
+          </p>
+
+          <div class="hero-cta-group">
+            <a href="downloads/PinTop-macOS-arm64.zip" download="PinTop-macOS-arm64.zip" class="btn-primary-download" id="hero-download-btn">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                <polyline points="7 10 12 15 17 10" />
+                <line x1="12" y1="15" x2="12" y2="3" />
+              </svg>
+              <span class="btn-download-text">
+                <span>Download PinTop for macOS</span>
+                <span class="btn-download-sub">v1.0.0 · PinTop-macOS-arm64.zip (2.0 MB)</span>
+              </span>
+            </a>
+
+            <a href="#interactive-sandbox" class="btn-secondary-action" id="hero-try-sandbox-btn">
+              <span>Try Interactive Sandbox</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <line x1="5" y1="12" x2="19" y2="12" />
+                <polyline points="12 5 19 12 12 19" />
+              </svg>
+            </a>
+          </div>
+
+          <div class="release-meta-bar">
+            <span class="release-meta-item">
+              <span class="release-meta-dot"></span>
+              <span>macOS 14.0 Sonoma &amp; Sequoia</span>
+            </span>
+            <span class="release-meta-item">
+              <span>100% SIP Compatible</span>
+            </span>
+            <button type="button" class="checksum-copy-btn" id="copy-checksum-btn" data-checksum="d6dd9a6a22f0b034df64485940a33f02effc8f08e0cb283384ffbb1a7e09d35a" title="Click to copy full SHA-256 checksum">
+              <span>SHA-256: d6dd9a6a…09d35a</span>
+              <span id="checksum-copy-label">Copy</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Hero Right Preview Card -->
+        <div class="hero-showcase-card">
+          <div class="hero-showcase-header">
+            <div class="hero-app-badge">
+              <img src="assets/icon.png" alt="PinTop Icon" width="42" height="42" />
+              <div>
+                <div class="hero-app-badge-title">PinTop — Always on Top</div>
+                <div class="hero-app-badge-sub">Menu Bar &amp; Control Center</div>
+              </div>
+            </div>
+            <div class="status-pills">
+              <span class="status-pill-ok">✓ Screen OK</span>
+              <span class="status-pill-ok">✓ AX OK</span>
+            </div>
+          </div>
+
+          <div class="hero-image-frame">
+            <img src="assets/screenshot-modes.png" alt="PinTop Hybrid Pinning Modes and Floating Control Pill on macOS" width="960" height="580" />
+          </div>
+
+          <div class="hero-QuickModes-strip">
+            <div class="mini-mode-tag">
+              <strong>📌 1:1 Pin</strong>
+              <span>In-place interactive</span>
+            </div>
+            <div class="mini-mode-tag">
+              <strong>👻 Ghost</strong>
+              <span>Click-through 25–100%</span>
+            </div>
+            <div class="mini-mode-tag">
+              <strong>🖼️ PiP</strong>
+              <span>Draggable mini clone</span>
+            </div>
+            <div class="mini-mode-tag">
+              <strong>↗️ Auto-Raise</strong>
+              <span>Instant focus recovery</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Interactive Live Window-Pinning Sandbox -->
+    <section class="section-block" id="interactive-sandbox">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-kicker">Interactive Live Simulation</span>
+          <h2 class="section-title">Test all 4 hybrid pinning modes right here.</h2>
+          <p class="section-desc">
+            Switch between <strong>1:1 Pin</strong>, <strong>Ghost</strong>, <strong>PiP</strong>, and <strong>Auto-Raise</strong> below, or drag the dark code editor window over the pinned Google Chrome window to see how PinTop responds in real time.
+          </p>
+        </div>
+
+        <!-- Sandbox Controls Toolbar -->
+        <div class="sandbox-toolbar">
+          <div class="sandbox-mode-buttons" role="tablist" aria-label="Pinning Mode Selector">
+            <button type="button" class="mode-switch-btn active" data-mode="inPlace" id="sandbox-mode-inplace" role="tab" aria-selected="true">
+              <span>📌 1:1 Pin</span>
+            </button>
+            <button type="button" class="mode-switch-btn" data-mode="ghost" id="sandbox-mode-ghost" role="tab" aria-selected="false">
+              <span>👻 Ghost (Click-Through)</span>
+            </button>
+            <button type="button" class="mode-switch-btn" data-mode="pip" id="sandbox-mode-pip" role="tab" aria-selected="false">
+              <span>🖼️ PiP (Mini Float)</span>
+            </button>
+            <button type="button" class="mode-switch-btn" data-mode="autoRaise" id="sandbox-mode-autoraise" role="tab" aria-selected="false">
+              <span>↗️ Auto-Raise</span>
+            </button>
+          </div>
+
+          <div class="sandbox-controls-right">
+            <label class="opacity-control-group" for="sandbox-opacity-slider">
+              <span>Opacity:</span>
+              <input type="range" id="sandbox-opacity-slider" class="opacity-slider" min="25" max="100" value="100" />
+              <span id="sandbox-opacity-value">100%</span>
+            </label>
+
+            <button type="button" class="sandbox-action-btn" id="sandbox-overlap-btn">
+              <span>⇄ Toggle Window Overlap</span>
+            </button>
+
+            <button type="button" class="sandbox-action-btn" id="sandbox-picker-btn" title="Simulate ⌃⌥K On-Screen Crosshair Picker">
+              <span>🎯 Pick on Screen (⌃⌥K)</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Simulated macOS Desktop Stage -->
+        <div class="desktop-stage" id="desktop-stage">
+          <div class="stage-menubar">
+            <div class="stage-menubar-left">
+              <strong></strong>
+              <strong>PinTop</strong>
+              <span>File</span>
+              <span>Window</span>
+            </div>
+            <div class="stage-menubar-right">
+              <span class="stage-status-pin" id="menubar-pin-badge">📌 1 Pinned</span>
+              <span>60 FPS IOSurface</span>
+            </div>
+          </div>
+
+          <!-- Floating Control Pill attached to Pinned Window -->
+          <div class="sim-control-pill" id="sim-control-pill">
+            <span>📌 Chrome</span>
+            <span class="pill-mode-indicator" id="pill-mode-label">1:1 Pin</span>
+            <span id="pill-opacity-label">100%</span>
+          </div>
+
+          <!-- Window 1: Pinned Target Window (Google Chrome) -->
+          <div class="sim-window sim-window-pinned" id="sim-window-pinned">
+            <div class="sim-titlebar">
+              <div class="traffic-lights">
+                <span class="traffic-dot red"></span>
+                <span class="traffic-dot yellow"></span>
+                <span class="traffic-dot green"></span>
+              </div>
+              <span id="pinned-window-title">System Architecture Spec — Google Chrome</span>
+              <span style="font-size: 0.7rem; color: var(--accent-sky);">Pinned</span>
+            </div>
+            <div class="sim-chrome-body">
+              <div class="sim-chrome-url">https://developer.apple.com/documentation/screencapturekit</div>
+              <h4>ScreenCaptureKit + IOSurface Pipeline</h4>
+              <p id="sim-chrome-desc">
+                When unobstructed, you interact directly with the real Chrome window. When overlapped by another app, PinTop projects a 60fps zero-copy mirror on top.
+              </p>
+              <div class="sim-spec-badges">
+                <span class="sim-badge blue">⚡ 60 FPS Zero-Copy</span>
+                <span class="sim-badge green">✓ SIP Enabled</span>
+                <span class="sim-badge amber" id="sim-state-badge">Native Interactive</span>
+              </div>
+              <button type="button" class="sim-interactive-test-btn" id="sim-chrome-click-btn">
+                <span>Click Inside Chrome (<span id="chrome-click-count">0</span>)</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Window 2: Draggable Editor Window -->
+          <div class="sim-window sim-window-editor" id="sim-window-editor">
+            <div class="sim-titlebar" id="sim-editor-drag-handle">
+              <div class="traffic-lights">
+                <span class="traffic-dot red"></span>
+                <span class="traffic-dot yellow"></span>
+                <span class="traffic-dot green"></span>
+              </div>
+              <span>PinnedWindowController.swift — Drag Me Over Chrome</span>
+              <span style="font-size: 0.7rem; opacity: 0.65;">⇄ Draggable</span>
+            </div>
+            <div class="sim-editor-body">
+              <div><span class="code-comment">// Zero-copy 60fps IOSurface stream via ScreenCaptureKit</span></div>
+              <div><span class="code-kw">@MainActor</span> <span class="code-kw">final class</span> <span class="code-type">PinnedWindowController</span> {</div>
+              <div>&nbsp;&nbsp;<span class="code-kw">@Published var</span> mode: <span class="code-type">PinMode</span> = <span class="code-type" id="code-mode-token">.inPlace</span></div>
+              <div>&nbsp;&nbsp;<span class="code-kw">@Published var</span> opacity: <span class="code-type">Double</span> = <span class="code-type" id="code-opacity-token">1.00</span></div>
+              <div>&nbsp;&nbsp;<span class="code-kw">@Published var</span> isTargetObstructed: <span class="code-type">Bool</span> = <span class="code-type" id="code-obstructed-token">false</span></div>
+              <div>}</div>
+
+              <div class="sim-editor-click-counter">
+                <span>Code Editor Clicks (works through Ghost overlay!): <strong id="editor-click-count">0</strong></span>
+                <button type="button" class="sim-editor-btn" id="sim-editor-click-btn">Test Editor Click</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Live Explanation Banner inside Stage -->
+          <div class="stage-status-banner">
+            <div class="stage-status-text" id="sandbox-status-message">
+              <strong>1:1 Pin Active:</strong> Drag the dark code editor window to overlap Chrome, or click "Toggle Window Overlap" above.
+            </div>
+            <div class="stage-hint">Shortcuts: ⌃⌥P · ⌃⌥K · ⌃⌥G · ⌃⌥U</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4 Hybrid Pinning Modes Editorial Section -->
+    <section class="section-block" id="modes-section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-kicker">Engineered for macOS Workflows</span>
+          <h2 class="section-title">Four pinning modes. Zero compromises.</h2>
+          <p class="section-desc">
+            Standard macOS apps cannot float arbitrary third-party windows without injecting code into the Dock process. PinTop solves this cleanly using Apple's native frameworks.
+          </p>
+        </div>
+
+        <div class="modes-grid">
+          <article class="mode-card">
+            <div>
+              <div class="mode-card-top">
+                <span class="mode-badge inplace">📌 1:1 Pin (In-Place)</span>
+                <span class="mode-use-case">Best for Specs &amp; Docs</span>
+              </div>
+              <h3>Native interaction when clear, 60fps mirror when covered</h3>
+              <p>
+                Keeps the target window pinned in its exact screen coordinates. While uncovered, all clicks, scrolling, and typing go directly to the native window. The instant another app overlaps it, a 60fps zero-copy <code>IOSurface</code> mirror seamlessly takes over—and a single click brings the real window forward.
+              </p>
+            </div>
+            <div class="mode-tech-detail">
+              <span>Occlusion polling + AXRaise</span>
+              <span>100% Opacity default</span>
+            </div>
+          </article>
+
+          <article class="mode-card">
+            <div>
+              <div class="mode-card-top">
+                <span class="mode-badge ghost">👻 Ghost (Click-Through)</span>
+                <span class="mode-use-case">Best for Pixel Diffing &amp; Tutorials</span>
+              </div>
+              <h3>Translucent floating reference you can click right through</h3>
+              <p>
+                Projects a customizable translucent overlay (<code>25%–100%</code> opacity) with <code>ignoresMouseEvents = true</code>. Keep a design mockup, terminal log, or API spec hovering right over your IDE while every mouse click and scroll gesture passes straight through to the code underneath.
+              </p>
+            </div>
+            <div class="mode-tech-detail">
+              <span>Global toggle: ⌃⌥G</span>
+              <span>78% Opacity default</span>
+            </div>
+          </article>
+
+          <article class="mode-card">
+            <div>
+              <div class="mode-card-top">
+                <span class="mode-badge pip">🖼️ PiP (Picture-in-Picture)</span>
+                <span class="mode-use-case">Best for Live Streams &amp; Dashboards</span>
+              </div>
+              <h3>Turn any macOS window into a resizable mini monitor</h3>
+              <p>
+                Shrinks any full-sized browser, simulator, or build log into a crisp aspect-locked floating mini-window anchored to the corner of your display. Drag anywhere on screen or resize from any corner while the source window stays out of your way.
+              </p>
+            </div>
+            <div class="mode-tech-detail">
+              <span>Aspect-ratio preserving</span>
+              <span>60fps SCStream</span>
+            </div>
+          </article>
+
+          <article class="mode-card">
+            <div>
+              <div class="mode-card-top">
+                <span class="mode-badge autoraise">↗️ Auto-Raise</span>
+                <span class="mode-use-case">Best for Active Utility Windows</span>
+              </div>
+              <h3>Automatic native window elevation via Accessibility</h3>
+              <p>
+                Monitors Z-order window stacking across your display and automatically raises the real native macOS window back to the top whenever an overlapping window covers its bounds—keeping the real window 100% native at all times.
+              </p>
+            </div>
+            <div class="mode-tech-detail">
+              <span>CGWindowList Z-order check</span>
+              <span>AXUIElementPerformAction</span>
+            </div>
+          </article>
+        </div>
+
+        <!-- Technical Comparison Table -->
+        <div class="comparison-wrapper">
+          <table class="comparison-table">
+            <thead>
+              <tr>
+                <th>Capability</th>
+                <th>PinTop (macOS 14+)</th>
+                <th>Legacy SIMBL / Dock Injectors</th>
+                <th>Basic Screenshot Overlays</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>System Integrity Protection (SIP)</strong></td>
+                <td class="check-good">✓ Keep SIP 100% Enabled</td>
+                <td class="check-bad">✗ Requires disabling SIP in Recovery OS</td>
+                <td class="check-good">✓ SIP Enabled</td>
+              </tr>
+              <tr>
+                <td><strong>Live 60fps Video &amp; Scrolling</strong></td>
+                <td class="check-good">✓ Hardware Zero-Copy IOSurface</td>
+                <td class="check-good">✓ Native Window</td>
+                <td class="check-bad">✗ Static frozen image only</td>
+              </tr>
+              <tr>
+                <td><strong>Click-Through Ghost Mode</strong></td>
+                <td class="check-good">✓ Adjustable 25%–100% Opacity (⌃⌥G)</td>
+                <td class="check-bad">✗ Not supported</td>
+                <td class="check-bad">✗ Limited / non-live</td>
+              </tr>
+              <tr>
+                <td><strong>Interactive Crosshair Picker (⌃⌥K)</strong></td>
+                <td class="check-good">✓ Hover &amp; click any window on screen</td>
+                <td class="check-bad">✗ Manual menu injection</td>
+                <td class="check-bad">✗ Manual region crop</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- Native macOS Interface Screenshots Section -->
+    <section class="section-block" id="screenshots-section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-kicker">Native SwiftUI &amp; AppKit Craftsmanship</span>
+          <h2 class="section-title">Designed to feel built into macOS.</h2>
+          <p class="section-desc">
+            Access PinTop from the macOS menu bar popover or the full Control Center window. Hover over any open window row to highlight its exact position on your physical display.
+          </p>
+        </div>
+
+        <div class="screenshot-tabs-wrapper">
+          <div class="screenshot-tab-controls">
+            <div class="screenshot-btn-group" role="tablist" aria-label="Screenshot Views">
+              <button type="button" class="screenshot-tab-btn active" id="tab-btn-dashboard" data-img="assets/screenshot-dashboard.png" data-caption="PinTop Main Control Center — Manage pinned windows, adjust opacity sliders, filter browsers, and hover to highlight windows on screen.">
+                Control Center Dashboard
+              </button>
+              <button type="button" class="screenshot-tab-btn" id="tab-btn-modes" data-img="assets/screenshot-modes.png" data-caption="Floating Control Pill &amp; PiP Mode — Switch between 1:1 Pin, Ghost, PiP, and Auto-Raise directly from the pinned window's top-left pill.">
+                Floating Pill &amp; PiP Overlay
+              </button>
+            </div>
+            <p class="screenshot-caption" id="screenshot-caption-text">
+              PinTop Main Control Center — Manage pinned windows, adjust opacity sliders, filter browsers, and hover to highlight windows on screen.
+            </p>
+          </div>
+
+          <div class="screenshot-display-frame">
+            <img src="assets/screenshot-dashboard.png" alt="PinTop macOS Control Center Dashboard Screenshot" id="active-screenshot-img" width="1200" height="1100" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Global Keyboard Shortcuts Section -->
+    <section class="section-block" id="shortcuts-section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-kicker">Instant Carbon Hotkeys</span>
+          <h2 class="section-title">Pin, pick, or ghost without touching the mouse.</h2>
+          <p class="section-desc">
+            PinTop registers lightweight global Carbon hotkeys so you can control window stacking from any full-screen or desktop workspace. Click any card below to preview its action in the sandbox.
+          </p>
+        </div>
+
+        <div class="shortcuts-grid">
+          <button type="button" class="shortcut-card" id="hotkey-card-p" data-hotkey="P">
+            <div class="keycap-row">
+              <kbd class="keycap">⌃</kbd>
+              <kbd class="keycap">⌥</kbd>
+              <kbd class="keycap">P</kbd>
+            </div>
+            <h4>Pin / Unpin Active Window</h4>
+            <p>Instantly pins or unpins whichever macOS application window currently has keyboard focus.</p>
+          </button>
+
+          <button type="button" class="shortcut-card" id="hotkey-card-k" data-hotkey="K">
+            <div class="keycap-row">
+              <kbd class="keycap">⌃</kbd>
+              <kbd class="keycap">⌥</kbd>
+              <kbd class="keycap">K</kbd>
+            </div>
+            <h4>Crosshair Window Picker</h4>
+            <p>Move your crosshair cursor over any visible window on screen to highlight its frame and pin with a single click.</p>
+          </button>
+
+          <button type="button" class="shortcut-card" id="hotkey-card-g" data-hotkey="G">
+            <div class="keycap-row">
+              <kbd class="keycap">⌃</kbd>
+              <kbd class="keycap">⌥</kbd>
+              <kbd class="keycap">G</kbd>
+            </div>
+            <h4>Toggle Ghost Click-Through</h4>
+            <p>Switches all currently pinned windows between interactive 1:1 Pin mode and translucent click-through Ghost mode.</p>
+          </button>
+
+          <button type="button" class="shortcut-card" id="hotkey-card-u" data-hotkey="U">
+            <div class="keycap-row">
+              <kbd class="keycap">⌃</kbd>
+              <kbd class="keycap">⌥</kbd>
+              <kbd class="keycap">U</kbd>
+            </div>
+            <h4>Unpin All Windows</h4>
+            <p>Immediately dismisses all active floating overlays and restores your desktop to its normal state.</p>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Download & Build From Source Section -->
+    <section class="section-block" id="download-section">
+      <div class="container">
+        <div class="download-panel">
+          <div>
+            <span class="section-kicker">Ready in 30 Seconds</span>
+            <h2 class="section-title">Download PinTop for macOS</h2>
+            <p class="section-desc">
+              Pre-built, ad-hoc signed release bundle (<code>com.pintop.mac</code>) for Apple Silicon Macs running macOS 14.0 Sonoma or newer. Free and open-source.
+            </p>
+
+            <ol class="install-steps">
+              <li>
+                <span class="step-num">1</span>
+                <span>Download and extract <strong>PinTop-macOS-arm64.zip</strong>, then drag <code>PinTop.app</code> into your <code>/Applications</code> folder.</span>
+              </li>
+              <li>
+                <span class="step-num">2</span>
+                <span>Open <code>PinTop.app</code>. If macOS Gatekeeper prompts on first launch, right-click &rarr; <strong>Open</strong> (or run <code>xattr -cr PinTop.app</code>).</span>
+              </li>
+              <li>
+                <span class="step-num">3</span>
+                <span>Grant <strong>Screen Recording</strong> and <strong>Accessibility</strong> permissions so the top-right status badges show <code>Screen OK</code> and <code>AX OK</code>.</span>
+              </li>
+            </ol>
+
+            <div class="hero-cta-group">
+              <a href="downloads/PinTop-macOS-arm64.zip" download="PinTop-macOS-arm64.zip" class="btn-primary-download" id="footer-download-btn">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                  <polyline points="7 10 12 15 17 10" />
+                  <line x1="12" y1="15" x2="12" y2="3" />
+                </svg>
+                <span class="btn-download-text">
+                  <span>Download PinTop.app (ZIP)</span>
+                  <span class="btn-download-sub">Version 1.0.0 · 2.0 MB · Apple Silicon (arm64)</span>
+                </span>
+              </a>
+
+              <a href="https://github.com/windmaple/PinTop" target="_blank" rel="noopener noreferrer" class="btn-secondary-action" id="footer-github-btn">
+                <span>View Source on GitHub</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Terminal Build From Source Card -->
+          <div class="terminal-card">
+            <div class="terminal-header">
+              <span>zsh — Build from Swift Source</span>
+              <button type="button" class="terminal-copy-btn" id="copy-build-cmd-btn">Copy Commands</button>
+            </div>
+            <pre class="terminal-pre" id="build-commands-code"><code><span class="cmd-prompt">$</span> git clone https://github.com/windmaple/PinTop.git
+<span class="cmd-prompt">$</span> cd PinTop
+<span class="cmd-prompt">$</span> chmod +x build_app.sh
+<span class="cmd-prompt">$</span> ./build_app.sh
+<span class="cmd-prompt">$</span> open PinTop.app</code></pre>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Post-Download Helpful Toast -->
+  <aside class="download-toast" id="download-toast" aria-live="polite">
+    <div class="toast-header">
+      <strong>📦 Downloading PinTop-macOS-arm64.zip…</strong>
+      <button type="button" class="toast-close" id="toast-close-btn" aria-label="Close notification">✕</button>
+    </div>
+    <p>
+      Unzip and move <code>PinTop.app</code> to <code>/Applications</code>. If Gatekeeper blocks first launch, run:<br />
+      <code>xattr -cr /Applications/PinTop.app</code>
+    </p>
+  </aside>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div>
+        <strong>PinTop</strong> — Native Always on Top Window Manager for macOS. Built with Swift, AppKit, SwiftUI &amp; ScreenCaptureKit.
+      </div>
+      <div class="footer-links">
+        <a href="downloads/PinTop-macOS-arm64.zip" download="PinTop-macOS-arm64.zip" id="footer-link-download">Direct Download (.zip)</a>
+        <a href="https://github.com/windmaple/PinTop" target="_blank" rel="noopener noreferrer" id="footer-link-repo">GitHub Repository</a>
+        <a href="#top" id="footer-link-top">Back to Top &uarr;</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
